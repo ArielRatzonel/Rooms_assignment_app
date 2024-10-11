@@ -48,15 +48,16 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <h1>Camp Room Assignment</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
         <input
           type="text"
           placeholder="Enter your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          style={{ marginRight: '10px' }}
         />
         <select onChange={(e) => setSelectedRoom(parseInt(e.target.value))}>
           <option value="">Select a room</option>
@@ -66,7 +67,7 @@ export default function Home() {
             </option>
           ))}
         </select>
-        <button type="submit">Join Room</button>
+        <button type="submit" style={{ marginLeft: '10px' }}>Join Room</button>
       </form>
 
       {message && <p>{message}</p>}
