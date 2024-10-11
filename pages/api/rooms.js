@@ -1,4 +1,4 @@
-// rooms.js API - with in-memory storage of room data
+// Initial room data stored in memory
 let rooms = [
   { id: 1, capacity: 2, occupants: [] },
   { id: 2, capacity: 2, occupants: [] },
@@ -53,9 +53,14 @@ export default function handler(req, res) {
     const room = rooms.find(r => r.id === roomId);
     
     if (room && room.occupants.length < room.capacity) {
-      // Check if the name is already in the room
       if (!room.occupants.includes(name)) {
-        room.occupants.push(name); // Add the new occupant
+        room.occupants.push(name); // Add occupant if they're not already in the room
         res.status(200).json({ success: true });
       } else {
-        res.status(400).json({ error: "This person
+        res.status(400).json({ error: "This person is already in the room" });
+      }
+    } else {
+      res.status(400).json({ error: "Room is full or does not exist" });
+    }
+  }
+}
