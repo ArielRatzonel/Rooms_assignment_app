@@ -1,4 +1,4 @@
-// Initial room data stored in memory (since Vercel serverless doesn't support file system persistence)
+// rooms.js API - with in-memory storage of room data
 let rooms = [
   { id: 1, capacity: 2, occupants: [] },
   { id: 2, capacity: 2, occupants: [] },
@@ -58,10 +58,4 @@ export default function handler(req, res) {
         room.occupants.push(name); // Add the new occupant
         res.status(200).json({ success: true });
       } else {
-        res.status(400).json({ error: "This person is already in the room" });
-      }
-    } else {
-      res.status(400).json({ error: "Room is full or does not exist" });
-    }
-  }
-}
+        res.status(400).json({ error: "This person
